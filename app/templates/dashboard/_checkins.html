@@ -1,0 +1,15 @@
+<ol class="talk-list">
+    {% for checkin in user_checkins %}
+        <li class="talk">
+            <a href="{{url_for('dashboard.show_checkin', id=checkin.id) }} ">Case on {{checkin.created_at}}
+                <button style="margin-left: 30px;" class="btn btn-primary">Details</button>
+            </a>
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('dashboard.delete_checkin', id=checkin.id) }} ">
+                <button style="margin-left: 30px;" class="btn btn-primary">Delete</button>
+            </a>
+            {% endif %}
+
+        </li>
+    {% endfor %}
+</ol>

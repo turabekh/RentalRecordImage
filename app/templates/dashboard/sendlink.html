@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/image_1.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        #send {
+            background-color: transparent !important;
+            color: white !important;
+            width: 150px;
+            border: 1px solid white;
+            font-size: 18px;
+        }
+        #send:hover {
+            background-color: blue !important;
+        }
+        .form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p, h1, h4, h3 {
+            color: white !important;
+        }
+        #main {
+            margin-top: 80px;
+        }
+        #middle {
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 15px;
+            font-size: 16px;
+            padding-top: 80px;
+            padding-bottom: 90px;
+
+    
+        }
+
+        input {
+            background-color: transparent !important;
+            color: white !important;
+        }
+
+    </style>
+{% endblock %}
+{% block page_content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="page-header">
+            <h1>Send Rental Records </h1>
+        </div>
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}

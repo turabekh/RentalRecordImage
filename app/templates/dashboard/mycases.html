@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/first.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        #yes{
+            background-color: transparent !important;
+            color: white !important;
+            font-size: 14px;
+        }
+        #no{
+            background-color: transparent !important;
+            color: white !important;
+            width: 150px !important;
+            font-size: 14px;
+        }
+        #submit:hover {
+          background-color: blue !important;
+        }
+        #upload-form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p, label, h2 {
+            color: white !important;
+        }
+        input, textarea {
+          background-color: transparent !important;
+          color: white !important;
+        }
+        #forhover:hover {
+            background-color: black !important;
+        }
+    </style>
+{% endblock %}
+{% block page_content %}
+
+<div class="row" style="margin-top: 40px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#pickup">Pick up Rental Records</a></li>
+                    <li><a data-toggle="tab" href="#return">Return Rental Records</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="pickup" class="tab-pane fade in active">
+                        <div id="x" class="row">
+                            <div class="col-md-12">
+                                <h2>Rental Pick Up Records</h2>
+                                {% if user_checkins %}
+                                    {% include "dashboard/_checkins.html" %}
+                                {% else %}
+                                <p>No records found</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                        <div id="return" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Rental Return Records</h2>
+                                    {% if user_checkouts %}
+                                        {% include "dashboard/_checkouts.html" %}
+                                    {% else %}
+                                    <p>No records found</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+{% endblock %}

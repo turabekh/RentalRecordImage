@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/myaccount2.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        #submit {
+            background-color: transparent !important;
+            color: white !important;
+            width: 150px;
+        }
+        .form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p {
+            color: white !important;
+        }
+    </style>
+{% endblock %}
+{% block page_content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+            <div class="page-header">
+                    <h1>Login</h1>
+                </div>
+                <a class="pull-right" href="{{url_for('auth.send_link')}}">Forgot your passowrd?</a>
+                {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{% endblock %}

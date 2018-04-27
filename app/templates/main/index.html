@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/image_2.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        .submit {
+            background-color: transparent !important;
+            color: white !important;
+            width: 150px;
+            border: 1px solid white;
+            font-size: 18px;
+        }
+        .submit:hover {
+            background-color: blue !important;
+        }
+        .form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p, h1, h4 {
+            color: white !important;
+        }
+        #main {
+            margin-top: 150px;
+        }
+    </style>
+{% endblock %}
+
+{% block page_content %}
+
+<div id="main" class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h1>Rental Record Image</h1>
+        <h4>Convinient spot to keep your rental vehicle records</h4>
+        <h1 class="text-center"><a href="{{url_for('auth.signup')}} "><button class="btn submit">Sign up</button></a>
+            <a href="{{url_for('dashboard.index')}} "> <button class="btn submit">learn More</button></a>
+        </h1>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+ {% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/upload2.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        #submit {
+            background-color: transparent !important;
+            color: white !important;
+
+        }
+        #submit:hover {
+          background-color: blue !important;
+        }
+        #upload-form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p {
+            color: white !important;
+        }
+        input, textarea {
+          background-color: transparent !important;
+          color: white !important;
+        }
+    </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+      <div class="page-header">
+          <h1>Rental Pick up</h1>
+      </div>
+      <form id="upload-form" action = " {{url_for('dashboard.new_checkin')}} " method = "post" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}  
+      
+          
+          {{ form.car_number.label}}
+          {{ form.car_number(class_="form-control") }}
+      
+          {{ form.agent_name.label}}
+          {{ form.agent_name(class_="form-control") }}
+      
+          {{ form.add_info.label}}
+          {{ form.add_info(class_="form-control mb-5") }}
+            <div class="custom-file" style="margin-top:15px;margin-bottom: 15px;">
+              <label class="custom-file-label py-5" for="inputGroupFile01">Upload Photos(6 photos)</label>
+              <input type="file" class="custom-file-input" name="file" accept="image/*" multiple>
+            </div>
+      
+          {{ form.submit(class_="btn form-control btn-primary mt-5") }}
+      </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/profileinfo.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        .mybtn {
+            background-color: transparent !important;
+            color: white !important;
+            width: 250px;
+            font-size: 16px;
+        }
+        .mybtn:hover {
+            background-color: blue !important;
+        }
+        .form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p {
+            color: white !important;
+        }
+        input, textarea {
+          background-color: transparent !important;
+          color: white !important;
+        }
+    </style>
+{% endblock %}
+{% block page_content %}
+<div class="page-header user-profile">
+    <div class="user-avatar"><img src="{{ user.gravatar(128) }}"></div>
+    
+    <h1>{{ user.username }}</h1>
+    <p>
+        {% if user.name %}{{ user.name }}<br>{% endif %}
+        {% if user.location %}<a href="http://maps.google.com?q={{ user.location }}">{{ user.location }}</a><br>{% endif %}
+    </p>
+    {% if user.bio %}<p>{{ user.bio }}</p>{% endif %}
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+            {% if current_user == user %}<a class="mybtn btn btn-default" href="{{ url_for('auth.profile') }}">Edit Profile</a>{% endif %}
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endblock %}

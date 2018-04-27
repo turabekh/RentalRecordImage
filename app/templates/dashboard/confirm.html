@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block head %}
+{{ super() }}
+    <style>
+        body {
+        background: url("{{url_for('static', filename='img/upload2.png') }} " ) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        }
+        #yes{
+            background-color: transparent !important;
+            color: white !important;
+            font-size: 14px;
+        }
+        #no{
+            background-color: transparent !important;
+            color: white !important;
+            width: 150px !important;
+            font-size: 14px;
+        }
+        #yes:hover {
+          background-color: blue !important;
+        }
+        #no:hover {
+          background-color: blue !important;
+        }
+        #upload-form {
+            color: white !important;
+            margin-top: 30px;
+        }
+        h1 {
+            color: white !important;
+        }
+        .navbar {
+            background-color: transparent !important;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        ul, li, a, p, label {
+            color: white !important;
+        }
+        input, textarea {
+          background-color: transparent !important;
+          color: white !important;
+        }
+    </style>
+{% endblock %}
+{% block page_content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="page-header">
+            <h1>Please Select: </h1>
+        </div>
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{% endblock %}

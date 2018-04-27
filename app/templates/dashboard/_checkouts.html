@@ -1,0 +1,12 @@
+<ol class="talk-list">
+        {% for checkout in user_checkouts %}
+            <li class="talk">
+                <a href="{{url_for('dashboard.show_checkout', id=checkout.id) }} ">Case on {{checkout.created_at}}
+                    <button style="margin-left: 30px;" class="btn btn-primary">Details</button>
+                </a>
+                <a href="{{url_for('dashboard.delete_checkout', id=checkout.id) }} ">
+                        <button style="margin-left: 30px;" class="btn btn-primary">Delete</button>
+                    </a>
+            </li>
+        {% endfor %}
+    </ol>
